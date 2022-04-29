@@ -1,0 +1,68 @@
+defaults:
+  serialize_data: False
+  train: True
+  evaluate: True
+  device: cuda
+
+folds:
+  num_folds: 10
+  fold_for_testing: 9
+  train_folds: 5
+
+train:
+  weight_path: weights/
+  lr: 1e-3
+  batch_size: 8
+  epochs: 50
+  lowest_val_loss: 1e10
+  patience: 3
+
+model:
+  conv1_in_channel: 1
+  conv1_out_channel: 48
+  conv1_kernel_size: 3
+  conv2_in_channel: 48
+  conv2_out_channel: 48
+  conv2_kernel_size: 3
+  conv2_stride: 1
+  conv3_in_channel: 48
+  conv3_out_channel: 48
+  conv3_kernel_size: 3
+  conv3_stride: 1
+  conv4_in_channel: 48
+  conv4_out_channel: 48
+  conv4_kernel_size: 3
+  conv4_stride: 1
+  dropout_1: 0.25
+  dropout_2: 0.5
+  fc1_in_features: 82992 #555552 45792 35424 17280
+  fc1_out_features: 384
+  fc2_in_features: 384
+  fc2_out_features: 10
+  max_pool: 2
+
+  rnn_input_size: 40 
+  rnn_hidden_size: 4
+  rnn_num_layers: 2
+  rnn_hidden_size_2: 2
+
+paths:
+  root_path: data/
+  audio_path: data/original_audio/
+  split_audio_path: data/split_audio/
+  train_csv_path: data/train_metadata.csv
+  test_csv_path: data/test_metadata.csv
+  train_feature_dir: data/train_features
+  test_feature_dir: data/test_features
+  weights_path: weights/
+  best_weight_path: weights/fold_1_model.pth
+
+class_names: [blues, classical, country, disco, hiphop, jazz, metal, pop, reggae, rock]
+
+feature_extract: 
+  sr: 44100
+  n_fft: 1024
+  hop_length: 512
+  n_mels: 40
+  frames: 1000
+

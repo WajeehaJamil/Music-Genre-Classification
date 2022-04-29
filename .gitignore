@@ -1,0 +1,7 @@
+
+*.pickle
+*.pyc
+*.pyc
+*.au
+*.wav
+*.pth
